@@ -50,7 +50,7 @@ class App extends Component {
       <Fragment>
         <Router>
           <Navbar account={this.state.account} />
-        <CarouselHomepage/>
+          <CarouselHomepage/>
         <hr/>
             <Switch>
             <Route path='/' exact component={Home} />
