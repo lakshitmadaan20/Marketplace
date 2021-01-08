@@ -11,5 +11,5 @@ I build this project using Ethereum smart contracts and integrating with React a
 The advantages of Blockchain marketplace is that it aims on security and transparency issues faced on traditional marketplaces.
 
 Working video of the porject given below
-https://s3.console.aws.amazon.com/s3/object/facialr?region=ap-south-1&prefix=VID-20201027-WA0000.mp4
+https://facialr.s3.ap-south-1.amazonaws.com/VID-20201027-WA0000.mp4
 
