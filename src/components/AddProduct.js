@@ -6,15 +6,15 @@ class AddProduct extends Component {
         return (
           <div className="container">
           <h2 className="text-center">Add Product</h2>
-          <div className="jumbotron">
           <form onSubmit={(event) => {
           event.preventDefault()
           const name = this.productName.value
           const description = this.productDescription.value
           const image = this.productImage.value
           const phone = this.productPhone.value
+          const category = this.productCategory.value      
           const price = window.web3.utils.toWei(this.productPrice.value.toString(), 'Ether')
-          this.props.createProduct(name, price, description, image, phone)
+          this.props.createProduct(name, price, description, image, phone, category)
         }}>
             <div className="form-group mr-sm-2">
             <label>Product Name</label>
@@ -46,6 +46,16 @@ class AddProduct extends Component {
               className="form-control"
               placeholder="Enter Product Description"
               required />
+            </div>
+            <div className="form-group mr-sm-2">
+            <label>Owner Name</label>
+            <input
+              id="productCategory"
+              type="text"
+              ref={(input) => { this.productCategory = input }}
+              className="form-control"
+              placeholder="Enter Your Name"
+              required />
           </div>
             <div className="form-group mr-sm-2">
             <label>Image URL</label>
@@ -61,17 +71,17 @@ class AddProduct extends Component {
             <label>Phone No.</label>
             <input
               id="productPhone"
-              type="phone"
+              type="tel"
               ref={(input) => { this.productPhone = input }}
               className="form-control"
-              placeholder="Enter your phone no."
+              placeholder="Enter your phone no. with country code"
               required />
-          </div>
-          <Button type="submit" className="btn btn-block btn-outline-success">Add Product</Button>
-        </form>
-             </div>
-             
             </div>
+            <div className="form-group mr-sm-2">
+              <Button className="btn btn-block btn-success">Add</Button>  
+            </div>
+        </form>
+           </div>
         )
     }
 }

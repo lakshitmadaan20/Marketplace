@@ -76,7 +76,7 @@ class Home extends Component {
                     return (
                       <Fragment>
                          <div className="col-4 mb-3">
-                            <div className="card" style={{borderBlockColor:'fff'}}>
+                            <div className="card text-center" style={{borderBlockColor:'fff'}}>
                                 <div className="card-header bg-dark text-white">{product.name}</div>
                                 <div className="card-body">
                                     <div className="product-img">
@@ -84,15 +84,16 @@ class Home extends Component {
                                             src={product.image}
                                             alt=""
                                             className="mb-3"
-                                            style={{ maxHeight: "100%", maxWidth: "100%" }}
+                                            style={{ maxHeight: "50%", maxWidth: "50%" }}
                                         />
                                      </div>
-                                    <p className="black-6">Description: {product.description.substring(0,200)}</p>
+                                    <p className="black-6">Description: {product.description.substring(0,100)}</p>
                                     <p className="black-7">
                                         Price: {window.web3.utils.fromWei(product.price.toString(), 'Ether')} Eth
                                      </p>
-                                     <p className="black-8">Status: {product.purchased? <span class="badge badge-danger">Sold</span>: <span class="badge badge-warning">Available</span> }</p>
-                                    <p className="black-9">Owner: {product.owner}</p>
+                                  
+                                     <p className="black-9">Status: {product.purchased? <span class="badge badge-danger">Sold</span>: <span class="badge badge-warning">Available</span> }</p>
+                                    <p className="black-10">Owner: {product.owner}</p>
                                     <Link className="nav-link" to={`product/${product.id}`}>
                                     <button className=" btn btn-block btn-primary">View product</button>
                                     </Link>

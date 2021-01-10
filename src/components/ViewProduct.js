@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import Marketplace from '../abis/Marketplace.json'
-import { Button } from 'semantic-ui-react'
-
 import Web3 from 'web3'
 
 class ViewProduct extends Component {
@@ -77,11 +75,11 @@ class ViewProduct extends Component {
     render() {
         
         return (
-            <div>
+            <div class="container">
                 {
                     this.state.loading ? 
-                        <div classNmae="container"> 
-                             <div class="d-flex justify-content-center jumbotron">
+                    <div className="container"> 
+                    <div class="d-flex justify-content-center">
                     <button class="btn btn-primary">
                       <span class="spinner-grow spinner-grow-sm"></span>
                        Loading...
@@ -94,32 +92,31 @@ class ViewProduct extends Component {
                 {this.state.products.map((product, key) => {
                     if (this.state.productId === product.id.toString()) {
                         return (
-                            <div key={key} className="container">
-                                <div className="row mt-5">
-                                    <div className="col-6 jumbotron">
+                          <div key={key}>
+                               <div className="row">
+                                    <div className="col-6">
                                         <div className="product-img">
                                         <img
                                             src={product.image}
                                             alt=""
                                             className="mb-3"
-                                            style={{ maxHeight: "100%", maxWidth: "100%" }}
+                                            style={{ maxHeight: "50%", maxWidth: "50%" }}
                                         />
                                         </div>
                                     </div>
 
                                     <div className="col-6">
-                                        <div className="card">
-                                   <div className="card-header text-white" style={{backgroundColor:'#4B0082'}}>{product.name}</div>
+                                    <div className="card">
+                                   <div className="card-header text-white bg-dark">{product.name}</div>
                                      <div className="card-body">
                                     <p className="black-6">Description: {product.description}</p>
                                     <p className="black-7">
                                         Price: {window.web3.utils.fromWei(product.price.toString(), 'Ether')} Eth
                                      </p>
-                                     <p className="black-8">Status: {product.purchased? "Sold" : "Available" }</p>
+                                     <p className="black-8">Status: {product.purchased?  <span class="badge badge-danger">Sold</span>: <span class="badge badge-warning">Available</span> }</p>
                                     <p className="black-9">Owner: {product.owner}</p>
-                                    <p className="black-10"> Owner Phone No: {product.purchased? 'Not Available' : `${product.phone}`}
-                                      
-                                    </p>
+                                    <p className="black-9">Owner Name: {product.purchased ? 'Not Available' : `${product.category}`}</p>
+                                    <p className="black-10"> Owner Phone No: {product.purchased ? 'Not Available' : `${product.phone}`}</p>
                                                 {
                                                     !product.purchased ?
                                                     <button
@@ -134,20 +131,20 @@ class ViewProduct extends Component {
                                                     Buy
                                                   </button>
                                                      :
-                                                   <button className="btn btn-danger btn-block">Sold</button>
+                                                    ""
                                                           
                                     }        
                                     </div>
                                       </div>
                                     </div>
-                                </div>
+                            </div>
                             </div>
                         )
                     }
                 })}
             </div>
             }
-            </div>
+         </div>
         )
     }
     

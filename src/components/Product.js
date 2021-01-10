@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AddProduct from './AddProduct'
 import Marketplace from '../abis/Marketplace.json'
 import Web3 from 'web3'
-import {Redirect} from 'react-router-dom'
+
 
 export default class Product extends Component {
 
@@ -51,9 +51,9 @@ export default class Product extends Component {
    //this.purchaseProduct = this.purchaseProduct.bind(this)
     }
 
-    createProduct(name, description, image, price, phone) {
+    createProduct(name, description, image, price, phone, category) {
         this.setState({ loading: true })
-        this.state.marketplace.methods.createProduct(name,description,image, price, phone).send({ from: this.state.account })
+        this.state.marketplace.methods.createProduct(name, description,image, price, phone, category).send({ from: this.state.account })
         .once('receipt', (receipt) => {
             this.setState({ loading: false})
         })
@@ -65,7 +65,7 @@ export default class Product extends Component {
             <div classname="container">
                 <div className="mt-5">
                 {this.state.loading ?
-                    <div class="d-flex justify-content-center jumbotron">
+                    <div class="d-flex justify-content-center">
                         <button class="btn btn-primary">
                           <span class="spinner-grow spinner-grow-sm"></span>
                            Loading...

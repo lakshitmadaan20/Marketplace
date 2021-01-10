@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
 
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Marketplace</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Crowd Market</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
       </li>
@@ -21,9 +21,6 @@ class Navbar extends Component {
         </Link>
       </li>
     </ul>
-    <span class="navbar-text">
-      Your Account No: {this.props.account}
-    </span>
   </div>
 </nav>
     );

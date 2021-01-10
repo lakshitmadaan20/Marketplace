@@ -12,6 +12,7 @@ contract Marketplace {
         string image;
         uint price;
         uint phone;
+        string category;
         address payable owner;
         bool purchased;
     }
@@ -23,6 +24,7 @@ contract Marketplace {
         string image,
         uint price,
         uint phone,
+        string category,
         address payable owner,
         bool purchased
     );
@@ -34,6 +36,7 @@ contract Marketplace {
         string image,
         uint price,
         uint phone,
+        string category,
         address payable owner,
         bool purchased
     );
@@ -42,22 +45,23 @@ contract Marketplace {
         name = "Marketplace";
     }
 
-    function createProduct(string memory _name, uint _price, string memory _description, string memory _img, uint _phone) public {
+    function createProduct(string memory _name, uint _price, string memory _description, string memory _img, uint _phone, string memory _category) public {
         // Require a valid name
         require(bytes(_name).length > 0);
-        
+   
         require(bytes(_description).length > 0);
         
         require(bytes(_img).length > 0);
         // Require a valid price
         require(_price > 0);
         require(_phone > 0);
+        require(bytes(_category).length > 0);
         // Increment product count
         productCount ++;
         // Create the product
-        products[productCount] = Product(productCount, _name, _description, _img, _price,_phone, msg.sender, false);
+        products[productCount] = Product(productCount, _name, _description, _img, _price,_phone, _category, msg.sender, false);
         // Trigger an event
-        emit ProductCreated(productCount, _name, _description, _img, _price, _phone, msg.sender, false);
+        emit ProductCreated(productCount, _name,  _description, _img, _price, _phone, _category, msg.sender, false);
     }
 
     function purchaseProduct(uint _id) public payable {
@@ -82,6 +86,6 @@ contract Marketplace {
         // Pay the seller by sending them Ether
         address(_seller).transfer(msg.value);
         // Trigger an event
-        emit ProductPurchased(productCount, _product.name, _product.description, _product.image, _product.price, _product.phone, msg.sender, true);
+        emit ProductPurchased(productCount, _product.name, _product.description, _product.image, _product.price, _product.phone, _product.category, msg.sender, true);
     }
 }

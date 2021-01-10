@@ -33,13 +33,18 @@ class App extends Component {
     // Load account
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
+
+    const balances = await web3.eth.getBalance(accounts[0]);
+    this.setState({ balance: balances})
+    console.log('balance = : ', this.state.balance);
     
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      account: ''
+      account: '',
+      balance: ''
     }
 
    }
@@ -49,9 +54,8 @@ class App extends Component {
     return (
       <Fragment>
         <Router>
-          <Navbar account={this.state.account} />
-          <CarouselHomepage/>
-        <hr/>
+          <Navbar/>
+          <CarouselHomepage account={this.state.account} balance={this.state.balance}/>
             <Switch>
             <Route path='/' exact component={Home} />
               <Route path='/addproduct' exact component={Product} />
